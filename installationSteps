@@ -1,0 +1,5 @@
+installation steps:
+1>run command "sudo apt-get install imagemagick -y" to install imagemagik for paperclip
+2>run command "which convert" to show the installation path, and replace config/environments/development.rb ,e.g Paperclip.options[:command_path] = "/usr/local/bin/"
+3>replace the default missing picture in path /public/assets/img/small/missing.png
+4>replace the baidu map Application Key(abbreviation as 'ak') in application.html.erb

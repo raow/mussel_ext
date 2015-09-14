@@ -1,0 +1,16 @@
+zh_CN:
+  activerecord:
+    models:
+      service_vendor: '供应商'
+    attributes:
+      service_vendor:
+        'no': '编号'
+        name: '名称'
+        contact: '联系人'
+        phone: '电话'
+        province: '省/直辖市'
+        city: '市/县'
+        region: '区'
+        location_details: '详细地址'
+        latitude: '经度'
+        longtitude: '纬度'

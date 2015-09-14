@@ -1,0 +1,6 @@
+zh_CN:
+  activerecord:
+    attributes:
+      service_item:
+        'no': '编号'
+        name: '名称'

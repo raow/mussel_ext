@@ -1,0 +1,43 @@
+<% content_for :page_title do %>
+<%= render 'title' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="dataTables_wrapper form-inline" role="grid">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="dataTables_filter pull-left">
+              <label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+                <td>
+                  <%= link_to '编辑', edit_user_path(user) %>
+                  <%= link_to '审核', approve_user_path(user), method: :post, data: { confirm: '确认审批通过?' } if user.approved_at.nil? %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

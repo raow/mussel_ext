@@ -1,0 +1,43 @@
+<% content_for :page_title do %>
+<%= render 'title' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="dataTables_wrapper form-inline" role="grid">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="dataTables_filter pull-left">
+              <label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @service_items.each do |service_item| %>
+              <tr>
+                <td><%= service_item.no %></td>
+                <td><%= service_item.name %></td>
+                <td>
+                  <%= link_to '编辑', edit_service_item_path(service_item) %>
+                  <%= link_to '禁用', service_item, method: :delete, data: { confirm: '确认禁用?' } %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

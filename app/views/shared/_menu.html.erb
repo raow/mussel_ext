@@ -1,0 +1,54 @@
+<ul class="nav navbar-nav">
+  <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the horizontal opening on mouse hover -->
+  <li class="classic-menu-dropdown active">
+    <a href="index.html">
+    控制台 <span class="selected">
+    </span>
+    </a>
+  </li>
+
+  <li class="classic-menu-dropdown">
+    <a data-hover="dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+    订单 <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu pull-left">
+      <li>
+        <%= link_to "待确认", service_orders_path(status: "待确认") %>
+      </li>
+      <li>
+        <%= link_to "已确认", service_orders_path(status: "已确认") %>
+      </li>
+      <li>
+        <%= link_to "已完成", service_orders_path(status: "已完成") %>
+      </li>
+      <li>
+        <%= link_to "已拒绝", service_orders_path(status: "已拒绝") %>
+      </li>
+      <li>
+        <%= link_to "已取消", service_orders_path(status: "已取消") %>
+      </li>
+    </ul>
+  </li>
+
+  <% if can? :manage, :all %>
+  <li class="classic-menu-dropdown">
+    <a data-hover="dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+    管理 <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu pull-left">
+      <li>
+        <%= link_to "服务项目", service_items_path %>
+      </li>
+      <li>
+        <%= link_to "用户账户", users_path %>
+      </li>
+      <li>
+        <%= link_to "供应商", service_vendors_path %>
+      </li>
+      <li>
+        <%= link_to "车主", car_owners_path %>
+      </li>
+    </ul>
+  </li>
+  <% end %>
+</ul>

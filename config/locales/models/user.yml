@@ -1,0 +1,8 @@
+zh_CN:
+  activerecord:
+    models:
+      user: '用户账户'
+    attributes:
+      user:
+        email: '邮箱'
+        password: '密码'

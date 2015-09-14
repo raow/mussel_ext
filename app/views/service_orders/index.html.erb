@@ -1,0 +1,46 @@
+<% content_for :page_title do %>
+<%= render 'title' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="dataTables_wrapper form-inline" role="grid">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="dataTables_filter pull-left">
+              <label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>状态</th>
+                <th>供应商</th>
+                <th>车主</th>
+                <th>项目</th>
+                <th>预约时间</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @service_orders.each do |service_order| %>
+              <tr>
+                <td><%= service_order.no %></td>
+                <td><%= service_order.status %></td>
+                <td><%= service_order.vendor.email %></td>
+                <td><%= service_order.customer.email %></td>
+                <td><%= service_order.service_item.name %></td>
+                <td><%= service_order.appointed_time.strftime('%Y-%m-%d %H:%M:%S') %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

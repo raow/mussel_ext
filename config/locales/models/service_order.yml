@@ -1,0 +1,6 @@
+zh_CN:
+  activerecord:
+    attributes:
+      service_order:
+        'no': '编号'
+        appointed_time: '预约时间'

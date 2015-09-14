@@ -1,0 +1,47 @@
+<% content_for :page_title do %>
+<%= render 'title' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="dataTables_wrapper form-inline" role="grid">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="dataTables_filter pull-left">
+              <label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>车牌</th>
+                <th>账户</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @car_owners.each do |car_owner| %>
+              <tr>
+                <td><%= car_owner.name %></td>
+                <td><%= car_owner.phone %></td>
+                <td><%= car_owner.car_license_no %></td>
+                <td><%= link_to car_owner.user.email, edit_user_path(car_owner.user) %></td>
+                <td>
+                  <%= link_to '编辑', edit_car_owner_path(car_owner) %>
+                  <%= link_to '订单', service_orders_path(customer_id: car_owner.user.id) %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

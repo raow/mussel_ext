@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+<%= render 'title' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="dataTables_wrapper form-inline" role="grid">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="dataTables_filter pull-left">
+              <label>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>联系人</th>
+                <th>电话</th>
+                <th>地址</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @service_vendors.each do |service_vendor| %>
+              <tr>
+                <td><%= service_vendor.no %></td>
+                <td><%= service_vendor.name %></td>
+                <td><%= service_vendor.contact %></td>
+                <td><%= service_vendor.phone %></td>
+                <td><%= service_vendor.province + service_vendor.city + service_vendor.region + service_vendor.location_details %></td>
+                <td>
+                  <%= link_to "编辑", edit_service_vendor_path(service_vendor) %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

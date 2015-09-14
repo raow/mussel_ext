@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>No:</strong>
+  <%= @service_vendor.no %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @service_vendor.name %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @service_vendor.contact %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @service_vendor.phone %>
+</p>
+
+<p>
+  <strong>Province:</strong>
+  <%= @service_vendor.province %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @service_vendor.city %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @service_vendor.region %>
+</p>
+
+<p>
+  <strong>Location details:</strong>
+  <%= @service_vendor.location_details %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @service_vendor.latitude %>
+</p>
+
+<p>
+  <strong>Longtitude:</strong>
+  <%= @service_vendor.longtitude %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @service_vendor.photo.url(:small) %>
+</p>
+
+<%= link_to 'Edit', edit_service_vendor_path(@service_vendor) %> |
+<%= link_to 'Back', service_vendors_path %>
