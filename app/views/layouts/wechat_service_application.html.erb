@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>汽车服务预约</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <%= stylesheet_link_tag "wechat_service_application" %>
+  <%= yield :page_styles %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :page_scripts %>
+  <div id="wechat_serivice_application"/>
+  <%= javascript_include_tag "wechat_service.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

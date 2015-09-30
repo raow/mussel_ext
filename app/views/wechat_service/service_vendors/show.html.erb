@@ -1,0 +1,69 @@
+<div data-role="page" id="div_show">
+  <div data-role="header" data-position="fixed">
+    <a href="<%=wechat_service_service_vendors_path(status: params[:status], wechat_user: params[:wechat_user])%>" data-role="button" data-icon="arrow-l" data-transition="slide" data-direction="reverse" data-iconpos="notext" class="ui-btn-left">返回</a>
+    <h1>
+      <%= @service_vendor.name %>
+    </h1>
+    
+  </div>
+  <ul data-role="listview" >
+    <% @service_vendor.service_items.each do |f|%>
+      <li data-role="list-drvider" data-icon="false">
+        <a>
+        <h2><%=f.name%></h2>
+        </a>
+        <span class="ui-li-count">
+          <%= link_to "预约", "#neworder", data: {rel: "popup", position_to: "window", transition: "flip", vendor: @service_vendor.id, item: f.id, user: params[:wechat_user]}, name: "add_service_order" %>
+        </span> 
+      </li>
+    <% end %>
+  </ul>
+
+  <div data-role="popup" id="neworder" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+    <h3>请选择预约时间</h3>
+    <p>请根据您的预计选择预约到店时间.</p>
+    <%= form_tag service_orders_path, method: :post do %>
+    <fieldset data-role="controlgroup" data-type="horizontal">
+      <label for="select-native-1">月份:</label>
+      <select name="service_month" id="select-native-1">
+        <% (1..12).each do |month|%>
+          <% if Time.now.month == month %>
+            <option value="<%=month%>" selected="selected"><%=month%>月</option>
+          <% else %>
+            <option value="<%=month%>"><%=month%>月</option>
+          <% end %>
+        <% end %>
+      </select>
+      <label for="select-native-1">日期:</label>
+      <select name="service_day" id="select-native-1">
+        <% (1..31).each do |day|%>
+          <% if Time.now.day == day %>
+            <option value="<%=day%>" selected="selected" ><%=day%>日</option>
+          <% else %>
+            <option value="<%=day%>" ><%=day%>日</option>
+          <% end %>
+        <% end %>
+      </select>
+    </fieldset>
+    <fieldset data-role="controlgroup" data-type="horizontal">
+      <label for="select-native-1">小时:</label>
+      <select name="service_hour" id="select-native-1">
+        <% (1..24).each do |hour|%>
+          <option value="<%=hour%>"><%=hour%>时</option>
+        <% end %>
+      </select>
+      <label for="select-native-1">分钟:</label>
+      <select name="service_minute" id="select-native-1">
+        <% ["00","15","30","45"].each do |minute|%>
+          <option value="<%=minute%>"><%=minute%>分</option>
+        <% end %>
+      </select>
+      <input type="hidden" id="service_vendor_id" name="service_vendor_id" />
+      <input type="hidden" id="service_item_id" name="service_item_id" />
+      <input type="hidden" id="wechat_user" name="wechat_user" />
+    </fieldset>
+    <button class="ui-btn ui-btn-inline" type="submit" id="submit-2">预约</button>
+    <a href="#" data-rel="back" class="ui-btn ui-btn-inline">关闭</a>
+    <% end %>
+  </div>
+</div>

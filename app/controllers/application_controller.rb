@@ -21,14 +21,19 @@ class ApplicationController < ActionController::Base
   # end
 
   def layout_by_resource
-    if devise_controller?
-      'devise'
+    if request.original_url.include? "/wechat_service/" 
+      'wechat_service_application'
     else
-      'application'
-      # case action_name 
-      # when 'index' then 'list'
-      # when 'show', 'new', 'edit', 'update', 'create' then 'form'
-      # else 'application' end if controller_name != 'home'
-    end
+      if devise_controller?
+        'devise'
+      else
+        'application'
+        # case action_name 
+        # when 'index' then 'list'
+        # when 'show', 'new', 'edit', 'update', 'create' then 'form'
+        # else 'application' end if controller_name != 'home'
+      end
+    end  
+
   end
 end

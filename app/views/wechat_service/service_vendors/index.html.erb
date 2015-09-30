@@ -1,0 +1,11 @@
+<ul data-role="listview" data-inset="true">
+  <% @service_vendors.each do |f| %>
+    <li>
+      <a href="<%=wechat_service_service_vendor_path(f,status: params[:status],wechat_user: params[:wechat_user])%>">
+      <h2><%=f.name%></h2>
+      <p>电话: <%=f.phone%></p>
+      <p>地址: <%=f.province%>-<%=f.city%>-<%=f.region%>-<%=f.location_details%></p>
+      </a>
+    </li>
+  <% end %>
+</ul>

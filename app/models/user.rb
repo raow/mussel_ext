@@ -45,4 +45,8 @@ class User < ActiveRecord::Base
     self.role = "供应商" unless self.service_vendor.nil?
     self.role = "管理员" if self.role.nil?
   end
+  
+  def is_bind?
+    return !self.car_owner.nil?
+  end
 end

@@ -1,0 +1,25 @@
+<div data-role="page">
+  <div data-role="header" data-position="fixed">
+    <h1>
+      注册个人信息
+    </h1>
+  </div>
+  <div data-role="content" class="ui-content">
+  <%= form_for(@car_owner, url: wechat_service_car_owners_path ) do |f| %>
+    <% if f.object.errors.full_messages.any? %>
+      <div>
+      <ul>
+      <% f.object.errors.full_messages.map do |msg| %>
+        <li><strong><%=msg%></strong></li>
+      <% end %>
+      </ul>
+      </div>
+    <% end %>
+    <input type="hidden" id="service_vendor_id" name="open_id" value="<%=params[:open_id]%>" />
+    <%= render "shared/column", name: "姓名", content: f.text_field(:name) %>
+    <%= render "shared/column", name: "电话", content: f.text_field(:phone) %>
+    <%= render "shared/column", name: "车牌号", content: f.text_field(:car_license_no) %>
+    <button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit-2">注册</button>
+  <% end %>
+  </div>
+</div>

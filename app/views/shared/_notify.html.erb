@@ -1,3 +1,6 @@
+<% if @user.present? then %>
+
+<% else %>
 <ul class="nav navbar-nav pull-right">
   <!-- BEGIN NOTIFICATION DROPDOWN -->
 <!--   <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
@@ -367,3 +370,4 @@
   </li>
   <!-- END USER LOGIN DROPDOWN -->
 </ul>
+<% end %>

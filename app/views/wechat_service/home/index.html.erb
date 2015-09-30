@@ -1,0 +1,3 @@
+<%= flash[:notice] %>
+<%= button_to "创建菜单", '/system/menus' %>
+<%= link_to '删除菜单', {:controller => 'system/menus', :action => 'destroy', :id => 1},method: :delete, data: { confirm: 'Are you sure?' } %>

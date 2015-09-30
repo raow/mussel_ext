@@ -1,4 +1,38 @@
 Rails.application.routes.draw do
+  #oyster section
+  mount WeixinRailsMiddleware::Engine, at: "/"
+
+  resources :wechat_users, except: [:new, :create, :destroy] do
+    collection do
+      get 'success'
+    end
+  end
+
+  namespace :system do
+    resources :menus, only: [:create, :destroy]
+  end
+
+  namespace :wechat_service do 
+    
+  resources :car_owners, only: [:new, :create, :edit, :update] do
+    collection do
+      get 'success'
+    end
+  end
+
+  resources :service_vendors, only: [:index, :show]
+
+  resources :service_orders, only: [:index, :create] do 
+    member do
+      post 'cancel'
+      post 'refuse'
+      post 'confirm'
+      post 'complete'
+    end
+  end
+  end
+
+  #mussel section
   get 'users/index'
 
   resources :service_orders
